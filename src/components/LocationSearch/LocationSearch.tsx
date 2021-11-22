@@ -12,7 +12,6 @@ export const LocationSearch: FC<LocationSearchProps> = ({ onSearch }) => {
     onSearch(locationSearch);
     setLocationSearch("");
   };
-
   return (
     <div>
       <label>
