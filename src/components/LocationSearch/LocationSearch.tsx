@@ -16,7 +16,7 @@ export const LocationSearch: FC<LocationSearchProps> = ({ onSearch }) => {
   return (
     <div>
       <label>
-        Add Location
+        test
         <input
           className="ml-1 mr-1"
           type="text"

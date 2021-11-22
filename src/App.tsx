@@ -32,7 +32,7 @@ const App: FC = () => {
 
   return (
     <div className="container">
-      <h1>Weather App</h1>
+      <h1>Poisk govna</h1>
 
       <LocationSearch onSearch={addLocation} />
       <ErrorAlert message={error} />

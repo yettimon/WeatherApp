@@ -14,6 +14,7 @@ export async function searchLocation(
   term: string
 ): Promise<WeatherLocation | undefined> {
   const result = await fetch(`${server}/weather?q=${term}&${keyQuery}`);
+  console.log(result);
 
   if (result.status === 404) return undefined;
   if (result.status !== 200) throw new Error("Failed to read location data");
