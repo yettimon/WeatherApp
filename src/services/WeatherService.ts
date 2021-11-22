@@ -1,5 +1,4 @@
-import { resourceLimits } from "worker_threads";
-import { WeatherLocation } from "../model/Weather";
+import { Weather, WeatherLocation } from "../model/Weather";
 
 const key: string = process.env.REACT_APP_OPEN_WEATHER_API_KEY as string;
 if (key === undefined) {
@@ -23,7 +22,7 @@ export async function searchLocation(
   return await result.json();
 }
 
-export async function getWeather(locationId: number): Primise<Weather> {
+export async function getWeather(locationId: number): Promise<Weather> {
   const current = await fetch(
     `${server}/weather?id=${locationId}&${keyQuery}&units=metric`
   );
