@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useState } from "react";
+import "./App.css";
+import { LocationSearch } from "./components/LocationSearch/LocationSearch";
+import { LocationTable } from "./components/LocationTable/LocationTable";
+import { WeatherLocation } from "./model/Weather";
+import { searchLocation } from "./services/WeatherService";
+import { ErrorAlert, WarningAlert } from "./components/Alerts/Alerts";
 
-function App() {
+const App: FC = () => {
+  const [locations, setLocations] = useState<WeatherLocation[]>([]);
+  const [error, setError] = useState("");
+  const [warning, setWarning] = useState("");
+
+  console.log(process.env.REACT_APP_OPEN_WEATHER_API_KEY);
+  const resetAlerts = () => {
+    setError("");
+    setWarning("");
+  };
+
+  let addLocation = async (term: string) => {
+    resetAlerts();
+    const location = await searchLocation(term);
+
+    if (!location) {
+      setError(`No location found called '${term}'`);
+    } else if (locations.find((item) => item.id === location.id)) {
+      setWarning(`Location '${term}' is already in the list.`);
+    } else {
+      setLocations([location, ...locations]);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Weather App</h1>
+
+      <LocationSearch onSearch={addLocation} />
+      <ErrorAlert message={error} />
+      <WarningAlert message={warning} />
+      <LocationTable locations={locations} />
     </div>
   );
-}
+};
 
 export default App;
