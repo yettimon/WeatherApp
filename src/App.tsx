@@ -34,7 +34,7 @@ const App: FC = () => {
 
   return (
     <div className="container">
-      <h1>Poisk govna</h1>
+      <h1>Weather forecast application</h1>
 
       <LocationSearch onSearch={addLocation} />
       <ErrorAlert message={error} />
