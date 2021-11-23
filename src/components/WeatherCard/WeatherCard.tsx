@@ -14,9 +14,11 @@ export const WeatherCard: FC<WeatherEntry> = ({ weather }) => (
   <div>
     <div>{convertUnixTimeToDate(weather.dt).toLocaleTimeString()}</div>
     <div>
-      <strong>{weather.main.temp}°C</strong>
+      Current: <strong>{weather.main.temp}°C</strong>
       <div>
-        ({weather.main.temp_min}°C / {weather.main.temp_max}°C)
+        (Min : {weather.main.temp_min}°C / Max :{weather.main.temp_max}°C)
+        (Humidity : {weather.main.humidity}) (Pressure : {weather.main.pressure}
+        ) (Feels like : {weather.main.feels_like})
       </div>
     </div>
     {weather.weather.map((condition) => (

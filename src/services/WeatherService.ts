@@ -33,3 +33,12 @@ export async function getWeather(locationId: number): Promise<Weather> {
 export function getIconUrl(code: string) {
   return `http://openweathermap.org/img/wn/${code}.png`;
 }
+
+export async function getForecast(locationId: number): Promise<Weather[]> {
+  const forecast = await fetch(
+    `${server}/forecast?id=${locationId}&${keyQuery}&units=metric&cnt=6`
+  );
+  if (forecast.status !== 200) throw new Error("Failed to read location data");
+
+  return (await forecast.json()).list;
+}

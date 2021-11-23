@@ -6,8 +6,10 @@ export interface WeatherConditions {
 }
 
 export interface WeatherData {
-  temp: number;
   feels_like: number;
+  humidity: number;
+  pressure: number;
+  temp: number;
   temp_min: number;
   temp_max: number;
 }
