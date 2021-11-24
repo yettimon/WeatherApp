@@ -26,9 +26,9 @@ const App: FC = () => {
     const location = await searchLocation(term);
 
     if (!location) {
-      setError(`No location found called '${term}'`);
+      setError(`There is no such city '${term}'`);
     } else if (locations.find((item) => item.id === location.id)) {
-      setWarning(`Location '${term}' is already in the list.`);
+      setWarning(`City '${term}' is already in the list, click below.`);
     } else {
       setLocations([location, ...locations]);
       setCurrentLocation(location);

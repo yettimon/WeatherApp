@@ -20,15 +20,15 @@ export const WeatherCard: FC<WeatherEntry> = ({ weather }) => (
       )}
     </p>
     <p className={classes.currentDegrees}>
-      <strong>{weather.main.temp}°C</strong>
+      <strong>{Math.round(weather.main.temp)}°C</strong>
     </p>
     <div className="row">
       <div className="col col-md-6">
-        <p>Min : {weather.main.temp_min}°C</p>
-        <p>Max :{weather.main.temp_max}°C</p>
+        <p>Min : {Math.round(weather.main.temp_min)}°C</p>
+        <p>Max :{Math.round(weather.main.temp_max)}°C</p>
         <p>Humidity : {weather.main.humidity}🌢</p>
         <p>Pressure : {weather.main.pressure}</p>
-        <p>Feels like : {weather.main.feels_like}°C</p>
+        <p>Feels like : {Math.round(weather.main.feels_like)}°C</p>
       </div>
       <div className="col col-md-6">
         {weather.weather.map((condition) => (

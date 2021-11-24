@@ -29,8 +29,6 @@ export const WeatherSummary: FC<WeatherSummaryProps> = ({ location }) => {
   }, [location]);
 
   if (!location || !weather || !forecast) return null;
-  console.log(forecast);
-  console.log(weather);
   return (
     <div className="row justify-content-center d-flex">
       <div className="col col-md-12">
@@ -39,7 +37,7 @@ export const WeatherSummary: FC<WeatherSummaryProps> = ({ location }) => {
           <WeatherCard weather={weather} />
         </div>
       </div>
-      <h2 className="text-center">Forecast</h2>{" "}
+      <h2 className="text-center">Forecast for Day</h2>{" "}
       <div className={classes.forecastSection}>
         <div className={classes.forecastMain}>
           {forecast.map((timePoint) => (

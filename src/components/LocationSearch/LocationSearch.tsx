@@ -1,4 +1,5 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, KeyboardEvent } from "react";
+import classes from "./LocationSearch.module.css";
 
 interface LocationSearchProps {
   onSearch: (search: string) => void;
@@ -12,16 +13,23 @@ export const LocationSearch: FC<LocationSearchProps> = ({ onSearch }) => {
     onSearch(locationSearch);
     setLocationSearch("");
   };
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Enter") {
+      addLocation();
+    }
+  };
+
   return (
     <div>
-      <label>
-        <input
-          className="ml-1 mr-1"
-          type="text"
-          value={locationSearch}
-          onChange={(e) => setLocationSearch(e.target.value)}
-        />
-      </label>
+      <input
+        placeholder="Search for city"
+        className={classes.searchInput}
+        type="text"
+        value={locationSearch}
+        onChange={(e) => setLocationSearch(e.target.value)}
+        onKeyUp={handleKeyDown}
+      />
       <button
         className="btn btn-primary"
         onClick={addLocation}

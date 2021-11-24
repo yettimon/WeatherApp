@@ -20,7 +20,7 @@ export const ForecastCard: FC<ForecastEntry> = ({ weather }) => (
       )}
     </p>
     <p className={classes.currentDegrees}>
-      <strong>{weather.main.temp}°C</strong>
+      <strong>{Math.round(weather.main.temp)}°C</strong>
     </p>
     <div className={classes.forecastCol}>
       {weather.weather.map((condition) => (
@@ -32,7 +32,8 @@ export const ForecastCard: FC<ForecastEntry> = ({ weather }) => (
       ))}
       <p>
         <strong>
-          {weather.main.temp_min}°C / {weather.main.temp_max}
+          {Math.round(weather.main.temp_min)}°C /{" "}
+          {Math.round(weather.main.temp_max)}
         </strong>
       </p>
     </div>

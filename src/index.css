@@ -6,10 +6,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: Poppins, sans-serif;
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  min-height: 100vh;
   background: linear-gradient(rgb(190, 227, 248) 100%, rgb(249, 255, 255) 0);
 }
 
