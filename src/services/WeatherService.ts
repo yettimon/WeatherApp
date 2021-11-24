@@ -36,7 +36,7 @@ export function getIconUrl(code: string) {
 
 export async function getForecast(locationId: number): Promise<Weather[]> {
   const forecast = await fetch(
-    `${server}/forecast?id=${locationId}&${keyQuery}&units=metric&cnt=6`
+    `${server}/forecast?id=${locationId}&${keyQuery}&units=metric&cnt=8`
   );
   if (forecast.status !== 200) throw new Error("Failed to read location data");
 

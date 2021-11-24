@@ -7,6 +7,8 @@ import { searchLocation } from "./services/WeatherService";
 import { ErrorAlert, WarningAlert } from "./components/Alerts/Alerts";
 import { WeatherSummary } from "./components/WeatherSummary/WeatherSummary";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const App: FC = () => {
   const [locations, setLocations] = useState<WeatherLocation[]>([]);
   const [error, setError] = useState("");
@@ -29,13 +31,13 @@ const App: FC = () => {
       setWarning(`Location '${term}' is already in the list.`);
     } else {
       setLocations([location, ...locations]);
+      setCurrentLocation(location);
     }
   };
 
   return (
     <div className="container">
       <h1>Weather forecast application</h1>
-
       <LocationSearch onSearch={addLocation} />
       <ErrorAlert message={error} />
       <WarningAlert message={warning} />
