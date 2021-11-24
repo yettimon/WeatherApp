@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Weather } from "../../model/Weather";
 import { getIconUrl } from "../../services/WeatherService";
+import classes from "./WeatherCard.module.css";
 
 interface WeatherEntry {
   weather: Weather;
@@ -11,21 +12,33 @@ function convertUnixTimeToDate(unixUtc: number): Date {
 }
 
 export const WeatherCard: FC<WeatherEntry> = ({ weather }) => (
-  <div>
-    <div>{convertUnixTimeToDate(weather.dt).toLocaleTimeString()}</div>
-    <div>
-      Current: <strong>{weather.main.temp}°C</strong>
-      <div>
-        (Min : {weather.main.temp_min}°C / Max :{weather.main.temp_max}°C)
-        (Humidity : {weather.main.humidity}) (Pressure : {weather.main.pressure}
-        ) (Feels like : {weather.main.feels_like})
+  <div className={classes.parameters}>
+    <p>
+      {convertUnixTimeToDate(weather.dt).toLocaleTimeString(
+        navigator.language,
+        { hour: "2-digit", minute: "2-digit" }
+      )}
+    </p>
+    <p className={classes.currentDegrees}>
+      <strong>{weather.main.temp}°C</strong>
+    </p>
+    <div className="row">
+      <div className="col col-md-6">
+        <p>Min : {weather.main.temp_min}°C</p>
+        <p>Max :{weather.main.temp_max}°C</p>
+        <p>Humidity : {weather.main.humidity}🌢</p>
+        <p>Pressure : {weather.main.pressure}</p>
+        <p>Feels like : {weather.main.feels_like}°C</p>
+      </div>
+      <div className="col col-md-6">
+        {weather.weather.map((condition) => (
+          <div className={classes.centerAlign} key={condition.id}>
+            <img src={getIconUrl(condition.icon)} alt={condition.main} />{" "}
+            <p>{condition.main}</p>
+            {/* <p>"{condition.description}"</p> */}
+          </div>
+        ))}
       </div>
     </div>
-    {weather.weather.map((condition) => (
-      <div key={condition.id}>
-        <img src={getIconUrl(condition.icon)} alt={condition.main} />{" "}
-        {condition.main} {condition.description}
-      </div>
-    ))}
   </div>
 );

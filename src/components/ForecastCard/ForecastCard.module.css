@@ -1,0 +1,10 @@
+.parameters {
+  text-align: center;
+}
+.forecastCol {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-top: 1rem;
+}

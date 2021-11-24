@@ -1,8 +1,11 @@
 import React, { FC } from "react";
 import { useState, useEffect } from "react";
+import { classicNameResolver } from "typescript";
 import { Weather, WeatherLocation } from "../../model/Weather";
 import { getForecast, getWeather } from "../../services/WeatherService";
 import { WeatherCard } from "../WeatherCard/WeatherCard";
+import { ForecastCard } from "../ForecastCard/ForecastCard";
+import classes from "./WeatherSummary.module.css";
 
 interface WeatherSummaryProps {
   location: WeatherLocation | null;
@@ -29,18 +32,23 @@ export const WeatherSummary: FC<WeatherSummaryProps> = ({ location }) => {
   console.log(forecast);
   console.log(weather);
   return (
-    <div>
-      <hr />
-      <h2>{location.name}</h2>
-      <WeatherCard weather={weather} />
-      <h2>Forecast</h2>{" "}
-      <ol>
-        {forecast.map((timePoint) => (
-          <li key={timePoint.dt}>
-            <WeatherCard weather={timePoint} />
-          </li>
-        ))}
-      </ol>
+    <div className="row justify-content-center d-flex">
+      <div className="col col-md-12">
+        <div className={classes.block}>
+          <h2>{location.name}</h2>
+          <WeatherCard weather={weather} />
+        </div>
+      </div>
+      <h2 className="text-center">Forecast</h2>{" "}
+      <div className={classes.forecastSection}>
+        <div className={classes.forecastMain}>
+          {forecast.map((timePoint) => (
+            <div className={classes.forecastBlock} key={timePoint.dt}>
+              <ForecastCard weather={timePoint} />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

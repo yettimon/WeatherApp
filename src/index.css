@@ -10,8 +10,7 @@ body {
   -webkit-box-pack: center;
   justify-content: center;
   min-height: 100vh;
-  background: url(./assets/bg.6eb21da7.svg) center 120% / auto no-repeat,
-    linear-gradient(rgb(249, 255, 255) 0%, rgb(56, 200, 230) 100%);
+  background: linear-gradient(rgb(190, 227, 248) 100%, rgb(249, 255, 255) 0);
 }
 
 code {
