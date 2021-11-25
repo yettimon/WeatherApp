@@ -4,9 +4,11 @@
 .currentDegrees {
   font-size: 30px;
 }
+.currentTime {
+  font-size: 40px;
+}
 .centerAlign {
   height: auto;
-  display: flex;
   justify-content: center;
   align-items: center;
   height: auto;

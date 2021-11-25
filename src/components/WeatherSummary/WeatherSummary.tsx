@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { useState, useEffect } from "react";
-import { classicNameResolver } from "typescript";
 import { Weather, WeatherLocation } from "../../model/Weather";
 import { getForecast, getWeather } from "../../services/WeatherService";
 import { WeatherCard } from "../WeatherCard/WeatherCard";
@@ -16,7 +15,7 @@ export const WeatherSummary: FC<WeatherSummaryProps> = ({ location }) => {
   const [forecast, setForecast] = useState<Weather[] | null>(null);
 
   useEffect(() => {
-    (async function () {
+    (async () => {
       if (location) {
         const [weather, forecast] = await Promise.all([
           getWeather(location.id),
@@ -33,8 +32,7 @@ export const WeatherSummary: FC<WeatherSummaryProps> = ({ location }) => {
     <div className="row justify-content-center d-flex">
       <div className="col col-md-12">
         <div className={classes.block}>
-          <h2>{location.name}</h2>
-          <WeatherCard weather={weather} />
+          <WeatherCard weather={weather} location={location.name} />
         </div>
       </div>
       <h2 className="text-center">Forecast for Day</h2>{" "}
