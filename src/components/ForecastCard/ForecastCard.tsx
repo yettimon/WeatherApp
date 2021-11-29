@@ -14,10 +14,11 @@ function convertUnixTimeToDate(unixUtc: number): Date {
 export const ForecastCard: FC<ForecastEntry> = ({ weather }) => (
   <div className={classes.parameters}>
     <p>
-      {convertUnixTimeToDate(weather.dt).toLocaleTimeString(
-        navigator.language,
-        { hour: "2-digit", minute: "2-digit" }
-      )}
+      {convertUnixTimeToDate(weather.dt).toLocaleDateString("en-US", {
+        weekday: "long",
+        hour: "2-digit",
+        minute: "2-digit",
+      })}
     </p>
     <p className={classes.currentDegrees}>
       <strong>{Math.round(weather.main.temp)}°C</strong>
