@@ -19,6 +19,25 @@ export interface Weather {
   main: WeatherData;
   dt: number;
 }
+export interface Temp {
+  day: number;
+  min: number;
+  max: number;
+  night: number;
+  eve: number;
+  morn: number;
+}
+
+export interface WeatherDaily {
+  weather: WeatherConditions[];
+  dt: number;
+  sunrise: number;
+  sunset: number;
+  temp: Temp;
+  pressure: number;
+  humidity: number;
+  gust: number;
+}
 
 export interface Coordinates {
   lon: number;

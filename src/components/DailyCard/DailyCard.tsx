@@ -1,27 +1,25 @@
 import React, { FC } from "react";
-import { Weather } from "../../model/Weather";
+import { WeatherDaily } from "../../model/Weather";
 import { getIconUrl } from "../../services/WeatherService";
-import classes from "./ForecastCard.module.css";
+import classes from "./DailyCard.module.css";
 
 interface ForecastEntry {
-  weather: Weather;
+  weather: WeatherDaily;
 }
 
 function convertUnixTimeToDate(unixUtc: number): Date {
   return new Date(unixUtc * 1000);
 }
 
-export const ForecastCard: FC<ForecastEntry> = ({ weather }) => (
+export const DailyCard: FC<ForecastEntry> = ({ weather }) => (
   <div className={classes.parameters}>
     <p>
       {convertUnixTimeToDate(weather.dt).toLocaleDateString("en-US", {
         weekday: "long",
-        hour: "2-digit",
-        minute: "2-digit",
       })}
     </p>
     <p className={classes.currentDegrees}>
-      <strong>{Math.round(weather.main.temp)}°C</strong>
+      <strong>{Math.round(weather.temp.day)}°C</strong>
     </p>
     <div className={classes.forecastCol}>
       {weather.weather.map((condition) => (
@@ -31,12 +29,6 @@ export const ForecastCard: FC<ForecastEntry> = ({ weather }) => (
           {/* <p>"{condition.description}"</p> */}
         </div>
       ))}
-      <p>
-        <strong>
-          {Math.round(weather.main.temp_min)}°C /{" "}
-          {Math.round(weather.main.temp_max)}°C
-        </strong>
-      </p>
     </div>
   </div>
 );

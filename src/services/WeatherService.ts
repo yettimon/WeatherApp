@@ -42,3 +42,12 @@ export async function getForecast(locationId: number): Promise<Weather[]> {
 
   return (await forecast.json()).list;
 }
+
+export async function getDailyForecast(term: string) {
+  const dailyForecast = await fetch(
+    `${server}/forecast/daily?q=${term}&${keyQuery}&units=metric&cnt=8`
+  );
+  if (dailyForecast.status !== 200)
+    throw new Error("Failed to read location data (dailyForecast)");
+  return (await dailyForecast.json()).list;
+}
