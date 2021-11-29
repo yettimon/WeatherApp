@@ -30,7 +30,7 @@ export async function getWeather(locationId: number): Promise<Weather> {
   return await current.json();
 }
 
-export function getIconUrl(code: string) {
+export function getIconUrl(code: string): string {
   return `http://openweathermap.org/img/wn/${code}.png`;
 }
 
