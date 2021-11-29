@@ -7,9 +7,9 @@ interface ForecastEntry {
   weather: WeatherDaily;
 }
 
-function convertUnixTimeToDate(unixUtc: number): Date {
+const convertUnixTimeToDate = (unixUtc: number): Date => {
   return new Date(unixUtc * 1000);
-}
+};
 
 export const DailyCard: FC<ForecastEntry> = ({ weather }) => (
   <div className={classes.parameters}>
@@ -25,8 +25,10 @@ export const DailyCard: FC<ForecastEntry> = ({ weather }) => (
       {weather.weather.map((condition) => (
         <div className={classes.centerAlign} key={condition.id}>
           <img src={getIconUrl(condition.icon)} alt={condition.main} />{" "}
-          <p>{condition.main}</p>
-          {/* <p>"{condition.description}"</p> */}
+          <strong>
+            <p>{condition.main}</p>
+          </strong>
+          <p className={classes.parameters}>{condition.description}</p>
         </div>
       ))}
     </div>

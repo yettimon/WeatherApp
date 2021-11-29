@@ -7,9 +7,9 @@ interface ForecastEntry {
   weather: Weather;
 }
 
-function convertUnixTimeToDate(unixUtc: number): Date {
+const convertUnixTimeToDate = (unixUtc: number): Date => {
   return new Date(unixUtc * 1000);
-}
+};
 
 export const ForecastCard: FC<ForecastEntry> = ({ weather }) => (
   <div className={classes.parameters}>

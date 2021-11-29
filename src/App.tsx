@@ -21,7 +21,7 @@ const App: FC = () => {
     setWarning("");
   };
 
-  let addLocation = async (term: string) => {
+  const addLocation = async (term: string) => {
     resetAlerts();
     const location = await searchLocation(term);
 

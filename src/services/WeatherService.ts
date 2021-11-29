@@ -1,4 +1,4 @@
-import { Weather, WeatherLocation } from "../model/Weather";
+import { Weather, WeatherDaily, WeatherLocation } from "../model/Weather";
 
 const key: string = process.env.REACT_APP_OPEN_WEATHER_API_KEY as string;
 if (key === undefined) {
@@ -43,7 +43,7 @@ export async function getForecast(locationId: number): Promise<Weather[]> {
   return (await forecast.json()).list;
 }
 
-export async function getDailyForecast(term: string) {
+export async function getDailyForecast(term: string): Promise<WeatherDaily[]> {
   const dailyForecast = await fetch(
     `${server}/forecast/daily?q=${term}&${keyQuery}&units=metric&cnt=8`
   );
