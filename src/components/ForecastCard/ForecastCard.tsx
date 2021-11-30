@@ -31,12 +31,12 @@ export const ForecastCard: FC<ForecastEntry> = ({ weather }) => (
           {/* <p>"{condition.description}"</p> */}
         </div>
       ))}
-      <p>
-        <strong>
-          {Math.round(weather.main.temp_min)}°C /{" "}
-          {Math.round(weather.main.temp_max)}°C
-        </strong>
-      </p>
     </div>
+    <p>
+      <strong>
+        {Math.round(weather.main.temp_min)}°C /{" "}
+        {Math.round(weather.main.temp_max)}°C
+      </strong>
+    </p>
   </div>
 );

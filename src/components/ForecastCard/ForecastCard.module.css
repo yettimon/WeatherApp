@@ -1,6 +1,9 @@
 .parameters {
   text-align: center;
 }
+.parameters p {
+  color: white;
+}
 .forecastCol {
   display: flex;
   flex-direction: column;

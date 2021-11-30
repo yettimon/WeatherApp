@@ -24,7 +24,7 @@ export const DailyCard: FC<ForecastEntry> = ({ weather }) => (
     <div className={classes.forecastCol}>
       {weather.weather.map((condition) => (
         <div className={classes.centerAlign} key={condition.id}>
-          <img src={getIconUrl(condition.icon)} alt={condition.main} />{" "}
+          <img src={getIconUrl(condition.icon)} alt={condition.main} />
           <strong>
             <p>{condition.main}</p>
           </strong>

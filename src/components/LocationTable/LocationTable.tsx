@@ -10,7 +10,6 @@ interface LocationTableProps {
 export const LocationTable: FC<LocationTableProps> = ({
   locations,
   onSelect,
-  current,
 }) => (
   <div className="row justify-content-center d-flex">
     <h2>Locations History</h2>

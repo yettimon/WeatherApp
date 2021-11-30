@@ -43,16 +43,14 @@ export const WeatherSummary: FC<WeatherSummaryProps> = ({ location }) => {
       <div className="col col-md-12">
         <div className={classes.block}>
           <WeatherCard weather={weather} location={location.name} />
-        </div>
-      </div>
-      <h2 className="text-center">Forecast for Day</h2>{" "}
-      <div className={classes.forecastSection}>
-        <div className={classes.forecastMain}>
-          {forecast.map((timePoint) => (
-            <div className={classes.forecastBlock} key={timePoint.dt}>
-              <ForecastCard weather={timePoint} />
-            </div>
-          ))}
+          <hr />
+          <div className={classes.forecastMain}>
+            {forecast.map((timePoint) => (
+              <div className={classes.forecastBlock} key={timePoint.dt}>
+                <ForecastCard weather={timePoint} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <h2 className="text-center">Forecast full Week</h2>{" "}
